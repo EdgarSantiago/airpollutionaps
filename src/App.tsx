@@ -1,9 +1,9 @@
+/* eslint-disable react-native/no-inline-styles */
 import SplashScreen from 'react-native-splash-screen';
+import { SafeAreaView } from 'react-native';
 import React, { useEffect } from 'react';
 
-import AppProvider from '@context/index';
-
-import AppRoutes from '@routes/index';
+import HomeScreen from '@screens/home';
 
 const App = () => {
   useEffect(() => {
@@ -11,9 +11,9 @@ const App = () => {
   }, []);
 
   return (
-    <AppProvider>
-      <AppRoutes />
-    </AppProvider>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#ffffff' }}>
+      <HomeScreen />
+    </SafeAreaView>
   );
 };
 

@@ -1,7 +1,6 @@
 import { TextProps } from 'react-native';
 import React from 'react';
 
-import { FONT_SIZE_PARAGRAPH } from '@styles/typograph';
 import { COLORS } from '@styles/colors';
 
 import { StyledText } from './styles';
@@ -44,7 +43,7 @@ const CustomText: React.FC<ICustomTextProps> = ({
   h2,
   h3,
   p,
-  size = FONT_SIZE_PARAGRAPH,
+  size = 12,
   letterSpacing,
   color,
   bold,
