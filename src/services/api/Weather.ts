@@ -1,4 +1,21 @@
-import { api } from '.';
+import { api, API_KEY, IBaseResponse } from '.';
+
+export interface ICidadeDados {
+  components: {
+    co: number;
+    nh3: number;
+    no: number;
+    no2: number;
+    o3: number;
+    pm2_5: number;
+    pm10: number;
+    so2: number;
+  };
+  dt: number;
+  main: {
+    aqi: number;
+  };
+}
 
 export interface ICidade {
   nome: string;
@@ -7,6 +24,12 @@ export interface ICidade {
 }
 
 export const WeatherService = {
+  ListaInfosCidade: async (cidade: ICidade) => {
+    return api.get<IBaseResponse<ICidadeDados[]>>(
+      `forecast?lat=${cidade.lat}&lon=${cidade.lng}&appid=${API_KEY}`,
+    );
+  },
+
   ListaCidades: (): ICidade[] => {
     return [
       {

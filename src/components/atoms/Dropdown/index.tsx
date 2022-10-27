@@ -2,8 +2,6 @@
 import DropDownPicker from 'react-native-dropdown-picker';
 import React, { useState } from 'react';
 
-import SetaCimaIcon from '@icons/seta-cima.svg';
-import SetaBaixoIcon from '@icons/seta-baixo.svg';
 import CheckIcon from '@icons/check.svg';
 
 import { COLORS } from '@styles/colors';
@@ -52,8 +50,6 @@ const Dropdown: React.FC<IDropdownProps> = ({
           fontFamily: 'Inter',
           color: COLORS.grayDarker,
         }}
-        ArrowDownIconComponent={() => <SetaBaixoIcon stroke={COLORS.primary} />}
-        ArrowUpIconComponent={() => <SetaCimaIcon stroke={COLORS.primary} />}
         TickIconComponent={() => <CheckIcon stroke={COLORS.primary} />}
         listItemContainerStyle={{
           borderColor: COLORS.grayLight,
