@@ -3,4 +3,5 @@ export const COLORS = {
   primaryLight: '#3C3F56',
   secondary: '#3A94C7',
   danger: '#ff4f63',
+  grayDarker: '#6d6d6d',
 };
