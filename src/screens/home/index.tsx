@@ -14,7 +14,7 @@ import Accordion from '@molecules/Accordion';
 import Spacer from '@atoms/Spacer';
 import Dropdown from '@atoms/Dropdown';
 import CustomText from '@atoms/CustomText';
-import { Container, ContainerDado, ContainerTitulo } from './styles';
+import { ContainerDado, ContainerTitulo } from './styles';
 
 interface IHomeScreenProps {
   children?: React.ReactNode;
@@ -23,6 +23,7 @@ interface IHomeScreenProps {
 const HomeScreen: React.FC<IHomeScreenProps> = () => {
   const [cidadeSelecionada, setCidadeSelecionada] = useState<string>('Santos');
   const [dadosCidade, setDadosCidade] = useState<ICidadeDados[] | undefined>();
+  const [error, setError] = useState<string | undefined>();
   const cidades = useMemo(WeatherService.ListaCidades, []);
 
   useEffect(() => {
@@ -30,7 +31,15 @@ const HomeScreen: React.FC<IHomeScreenProps> = () => {
 
     WeatherService.ListaInfosCidade(
       cidades.find(c => c.nome === cidadeSelecionada)!,
-    ).then(({ data }) => setDadosCidade(data.list));
+    )
+      .then(({ data }) => {
+        setDadosCidade(data.list);
+        setError(undefined);
+      })
+      .catch(err => {
+        console.error(err.response);
+        setError('Falha ao carregar dados.');
+      });
   }, [cidadeSelecionada]);
 
   const renderItem = ({ item }: { item: ICidadeDados }) => {
@@ -91,48 +100,56 @@ const HomeScreen: React.FC<IHomeScreenProps> = () => {
             </CustomText>
           </ContainerDado>
         }
-        arrowColor={aqiColor}
       />
     );
   };
 
   return (
-    <Container>
-      <ContainerTitulo>
-        <ArIcon width={36} height={45} />
-
-        <Spacer right={4} />
-
-        <CustomText size={26} color="secondary" bold>
-          Qualidade do Ar
-        </CustomText>
-      </ContainerTitulo>
-
-      <Spacer top={16} />
-
-      <Dropdown
-        placeholder="Busca por região"
-        items={cidades.map(cidade => ({
-          label: cidade.nome,
-          value: cidade.nome,
-        }))}
-        value={cidadeSelecionada}
-        setValue={setCidadeSelecionada}
-      />
-
-      <Spacer top={16} />
-
+    <>
       {dadosCidade ? (
         <FlatList
           style={{ flex: 1 }}
-          contentContainerStyle={{ flexGrow: 1 }}
+          contentContainerStyle={{ flexGrow: 1, padding: 20 }}
           data={dadosCidade}
           renderItem={renderItem}
+          ListHeaderComponent={() => (
+            <>
+              <ContainerTitulo>
+                <ArIcon width={36} height={45} />
+
+                <Spacer right={4} />
+
+                <CustomText size={26} color="secondary" bold>
+                  Qualidade do Ar
+                </CustomText>
+              </ContainerTitulo>
+
+              <Spacer top={16} />
+
+              <Dropdown
+                placeholder="Busca por região"
+                items={cidades.map(cidade => ({
+                  label: cidade.nome,
+                  value: cidade.nome,
+                }))}
+                value={cidadeSelecionada}
+                setValue={setCidadeSelecionada}
+              />
+
+              <Spacer top={16} />
+            </>
+          )}
         />
       ) : (
-        <ActivityIndicator size="large" color={COLORS.secondary} />
+        !error && <ActivityIndicator size="large" color={COLORS.secondary} />
       )}
-    </Container>
+
+      {error && (
+        <CustomText size={16} color="#ffffff" center bold>
+          {error} Por favor, tente novamente.
+        </CustomText>
+      )}
+    </>
   );
 };
 

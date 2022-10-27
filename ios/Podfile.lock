@@ -73,11 +73,7 @@ PODS:
     - FlipperKit/FlipperKitNetworkPlugin
   - fmt (6.2.1)
   - glog (0.3.5)
-  - InputMask (6.1.0)
   - libevent (2.1.12)
-  - MMKV (1.2.13):
-    - MMKVCore (~> 1.2.13)
-  - MMKVCore (1.2.14)
   - OpenSSL-Universal (1.1.1100)
   - RCT-Folly (2021.06.28.00-v2):
     - boost
@@ -288,23 +284,6 @@ PODS:
   - React-jsinspector (0.69.0)
   - React-logger (0.69.0):
     - glog
-  - react-native-mmkv-storage (0.8.0):
-    - MMKV (= 1.2.13)
-    - React-Core
-  - react-native-pager-view (6.0.1):
-    - React-Core
-  - react-native-safe-area-context (4.3.3):
-    - RCT-Folly
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - ReactCommon/turbomodule/core
-  - react-native-splash-screen (3.3.0):
-    - React-Core
-  - react-native-text-input-mask (3.1.4):
-    - InputMask (~> 6.1.0)
-    - React-Core
-    - React-RCTText
   - React-perflogger (0.69.0)
   - React-RCTActionSheet (0.69.0):
     - React-Core/RCTActionSheetHeaders (= 0.69.0)
@@ -371,13 +350,8 @@ PODS:
     - React-jsi (= 0.69.0)
     - React-logger (= 0.69.0)
     - React-perflogger (= 0.69.0)
-  - RNDeviceInfo (9.0.2):
-    - React-Core
   - RNGestureHandler (2.6.0):
     - React-Core
-  - RNScreens (3.15.0):
-    - React-Core
-    - React-RCTImage
   - RNSVG (12.4.4):
     - React-Core
   - SocketRocket (0.6.0)
@@ -429,11 +403,6 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
-  - react-native-mmkv-storage (from `../node_modules/react-native-mmkv-storage`)
-  - react-native-pager-view (from `../node_modules/react-native-pager-view`)
-  - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
-  - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
-  - react-native-text-input-mask (from `../node_modules/react-native-text-input-mask`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -446,9 +415,7 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
-  - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -465,10 +432,7 @@ SPEC REPOS:
     - Flipper-RSocket
     - FlipperKit
     - fmt
-    - InputMask
     - libevent
-    - MMKV
-    - MMKVCore
     - OpenSSL-Universal
     - SocketRocket
     - YogaKit
@@ -512,16 +476,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
-  react-native-mmkv-storage:
-    :path: "../node_modules/react-native-mmkv-storage"
-  react-native-pager-view:
-    :path: "../node_modules/react-native-pager-view"
-  react-native-safe-area-context:
-    :path: "../node_modules/react-native-safe-area-context"
-  react-native-splash-screen:
-    :path: "../node_modules/react-native-splash-screen"
-  react-native-text-input-mask:
-    :path: "../node_modules/react-native-text-input-mask"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -546,12 +500,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
-  RNDeviceInfo:
-    :path: "../node_modules/react-native-device-info"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
-  RNScreens:
-    :path: "../node_modules/react-native-screens"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   Yoga:
@@ -574,10 +524,7 @@ SPEC CHECKSUMS:
   FlipperKit: cbdee19bdd4e7f05472a66ce290f1b729ba3cb86
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 3d02b25ca00c2d456734d0bcff864cbc62f6ae1a
-  InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  MMKV: aac95d817a100479445633f2b3ed8961b4ac5043
-  MMKVCore: 89f5c8a66bba2dcd551779dea4d412eeec8ff5bb
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   RCT-Folly: 4d8508a426467c48885f1151029bc15fa5d7b3b8
   RCTRequired: eff60a46da0f496a6c76c8f60108c20626860d27
@@ -593,11 +540,6 @@ SPEC CHECKSUMS:
   React-jsiexecutor: b2a049b9f156342f6037ccb0c8acf69f923d3089
   React-jsinspector: 6aced68014b275b7abd073c9598b0affd0e1669c
   React-logger: bcf33ce10afa135158c72635e621ddb94126c610
-  react-native-mmkv-storage: 8ba3c0216a6df283ece11205b442a3e435aec4e5
-  react-native-pager-view: 3051346698a0ba0c4e13e40097cc11b00ee03cca
-  react-native-safe-area-context: b456e1c40ec86f5593d58b275bd0e9603169daca
-  react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
-  react-native-text-input-mask: 36a546b378fadd2efe1b7484a859d34bc2c80395
   React-perflogger: aa48956d87bae67fc847acc196fae97928b96cd3
   React-RCTActionSheet: 4eaab2b885130ce9a88c8fdac5f1992315da80f6
   React-RCTAnimation: 5e91e3ceb988838fa43615bb602181be30d2b26e
@@ -610,9 +552,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: 7549ef7b07aad1cc629f4c6d88c325366f26423c
   React-runtimeexecutor: 7ad268dee53d001697e13264c6bc8e95a902352e
   ReactCommon: 74a3b8ee497c6d50ce86ef57e15c4c5bf654b83d
-  RNDeviceInfo: 1e3f62b9ec32f7754fac60bd06b8f8a27124e7f0
   RNGestureHandler: 920eb17f5b1e15dae6e5ed1904045f8f90e0b11e
-  RNScreens: 4a1af06327774490d97342c00aee0c2bafb497b7
   RNSVG: ecd661f380a07ba690c9c5929c475a44f432d674
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 4935173923cabaa830e195be3e8e4cac045a8f90
