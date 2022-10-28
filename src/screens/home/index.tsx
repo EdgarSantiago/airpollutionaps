@@ -14,7 +14,7 @@ import Accordion from '@molecules/Accordion';
 import Spacer from '@atoms/Spacer';
 import Dropdown from '@atoms/Dropdown';
 import CustomText from '@atoms/CustomText';
-import { ContainerDado, ContainerTitulo } from './styles';
+import { ContainerDado, ContainerHeader, ContainerTitulo } from './styles';
 
 interface IHomeScreenProps {
   children?: React.ReactNode;
@@ -107,39 +107,38 @@ const HomeScreen: React.FC<IHomeScreenProps> = () => {
   return (
     <>
       {dadosCidade ? (
-        <FlatList
-          style={{ flex: 1 }}
-          contentContainerStyle={{ flexGrow: 1, padding: 20 }}
-          data={dadosCidade}
-          renderItem={renderItem}
-          ListHeaderComponent={() => (
-            <>
-              <ContainerTitulo>
-                <ArIcon width={36} height={45} />
+        <>
+          <ContainerHeader>
+            <ContainerTitulo>
+              <ArIcon width={36} height={45} />
 
-                <Spacer right={4} />
+              <Spacer right={4} />
 
-                <CustomText size={26} color="secondary" bold>
-                  Qualidade do Ar
-                </CustomText>
-              </ContainerTitulo>
+              <CustomText size={26} color="secondary" bold>
+                Qualidade do Ar
+              </CustomText>
+            </ContainerTitulo>
 
-              <Spacer top={16} />
+            <Spacer top={16} />
 
-              <Dropdown
-                placeholder="Busca por região"
-                items={cidades.map(cidade => ({
-                  label: cidade.nome,
-                  value: cidade.nome,
-                }))}
-                value={cidadeSelecionada}
-                setValue={setCidadeSelecionada}
-              />
+            <Dropdown
+              placeholder="Busca por região"
+              items={cidades.map(cidade => ({
+                label: cidade.nome,
+                value: cidade.nome,
+              }))}
+              value={cidadeSelecionada}
+              setValue={setCidadeSelecionada}
+            />
+          </ContainerHeader>
 
-              <Spacer top={16} />
-            </>
-          )}
-        />
+          <FlatList
+            style={{ flex: 1 }}
+            contentContainerStyle={{ flexGrow: 1, padding: 20 }}
+            data={dadosCidade}
+            renderItem={renderItem}
+          />
+        </>
       ) : (
         !error && <ActivityIndicator size="large" color={COLORS.secondary} />
       )}

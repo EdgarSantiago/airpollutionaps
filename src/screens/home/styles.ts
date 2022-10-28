@@ -6,6 +6,10 @@ export const ContainerTitulo = styled.View`
   align-self: center;
 `;
 
+export const ContainerHeader = styled.View`
+  padding: 0 16px;
+`;
+
 export const ContainerDado = styled.View`
   flex-direction: row;
   align-items: center;
