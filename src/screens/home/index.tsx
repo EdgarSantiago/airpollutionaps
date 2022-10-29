@@ -1,12 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { ActivityIndicator, FlatList } from 'react-native';
+import { ActivityIndicator, FlatList, Pressable } from 'react-native';
 import React, { useEffect, useMemo, useState } from 'react';
 
 import { ICidadeDados, WeatherService } from '@services/api/Weather';
 
 import ArIcon from '@icons/ar.svg';
 
+import { getOpacityByPress } from '@utils/styles';
 import { formatApiDate } from '@utils/date';
 import { COLORS } from '@styles/colors';
 
@@ -14,7 +15,12 @@ import Accordion from '@molecules/Accordion';
 import Spacer from '@atoms/Spacer';
 import Dropdown from '@atoms/Dropdown';
 import CustomText from '@atoms/CustomText';
-import { ContainerDado, ContainerHeader, ContainerTitulo } from './styles';
+import {
+  ContainerDado,
+  ContainerFiltros,
+  ContainerHeader,
+  ContainerTitulo,
+} from './styles';
 
 interface IHomeScreenProps {
   children?: React.ReactNode;
@@ -23,6 +29,7 @@ interface IHomeScreenProps {
 const HomeScreen: React.FC<IHomeScreenProps> = () => {
   const [cidadeSelecionada, setCidadeSelecionada] = useState<string>('Santos');
   const [dadosCidade, setDadosCidade] = useState<ICidadeDados[] | undefined>();
+  const [isPrevisao, setIsPrevisao] = useState<boolean>(false);
   const [error, setError] = useState<string | undefined>();
   const cidades = useMemo(WeatherService.ListaCidades, []);
 
@@ -31,6 +38,7 @@ const HomeScreen: React.FC<IHomeScreenProps> = () => {
 
     WeatherService.ListaInfosCidade(
       cidades.find(c => c.nome === cidadeSelecionada)!,
+      isPrevisao,
     )
       .then(({ data }) => {
         setDadosCidade(data.list);
@@ -40,7 +48,7 @@ const HomeScreen: React.FC<IHomeScreenProps> = () => {
         console.error(err.response);
         setError('Falha ao carregar dados.');
       });
-  }, [cidadeSelecionada]);
+  }, [cidadeSelecionada, isPrevisao]);
 
   const renderItem = ({ item }: { item: ICidadeDados }) => {
     let aqi;
@@ -130,6 +138,30 @@ const HomeScreen: React.FC<IHomeScreenProps> = () => {
               value={cidadeSelecionada}
               setValue={setCidadeSelecionada}
             />
+
+            <ContainerFiltros>
+              <Pressable
+                style={getOpacityByPress}
+                onPress={() => setIsPrevisao(false)}>
+                <CustomText
+                  size={24}
+                  bold={!isPrevisao}
+                  color={!isPrevisao ? COLORS.secondary : '#ffffff'}>
+                  Atual
+                </CustomText>
+              </Pressable>
+
+              <Pressable
+                style={getOpacityByPress}
+                onPress={() => setIsPrevisao(true)}>
+                <CustomText
+                  size={24}
+                  bold={isPrevisao}
+                  color={isPrevisao ? COLORS.secondary : '#ffffff'}>
+                  Previsão
+                </CustomText>
+              </Pressable>
+            </ContainerFiltros>
           </ContainerHeader>
 
           <FlatList

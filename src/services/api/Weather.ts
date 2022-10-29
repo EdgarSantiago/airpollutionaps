@@ -24,9 +24,11 @@ export interface ICidade {
 }
 
 export const WeatherService = {
-  ListaInfosCidade: async (cidade: ICidade) => {
+  ListaInfosCidade: async (cidade: ICidade, isPrevisao: boolean) => {
     return api.get<IBaseResponse<ICidadeDados[]>>(
-      `forecast?lat=${cidade.lat}&lon=${cidade.lng}&appid=${API_KEY}`,
+      isPrevisao
+        ? `air_pollution/forecast?lat=${cidade.lat}&lon=${cidade.lng}&appid=${API_KEY}`
+        : `air_pollution?lat=${cidade.lat}&lon=${cidade.lng}&appid=${API_KEY}`,
     );
   },
 
