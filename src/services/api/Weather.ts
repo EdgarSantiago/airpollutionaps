@@ -35,6 +35,11 @@ export const WeatherService = {
   ListaCidades: (): ICidade[] => {
     return [
       {
+        nome: 'Cubatão',
+        lat: '-23.8681272',
+        lng: '-46.4790069',
+      },
+      {
         nome: 'Santos',
         lat: '-23.9549779',
         lng: '-46.4147151',
@@ -55,9 +60,19 @@ export const WeatherService = {
         lng: '-46.5010775',
       },
       {
+        nome: 'Itanhaém',
+        lat: '-24.1751473',
+        lng: '-46.9702631',
+      },
+      {
         nome: 'Peruíbe',
         lat: '-24.3296877',
         lng: '-47.1558979',
+      },
+      {
+        nome: 'Bertioga',
+        lat: '-23.7957362',
+        lng: '-46.2947978',
       },
     ];
   },
